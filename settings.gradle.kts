@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Galactic Merchants"
+rootProject.name = "GalacticMerchants"
 include(":app")
