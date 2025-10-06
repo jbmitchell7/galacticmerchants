@@ -28,9 +28,9 @@ class ServerStatusViewModel: ViewModel() {
         viewModelScope.launch {
             serverStatusState = ServerStatusState.Loading
             serverStatusState = try {
-                val status = SpaceTradersApi.retrofitService.getServerStatus()
+                val result = SpaceTradersApi.retrofitService.getServerStatus()
                 ServerStatusState.Success(
-                    "$status"
+                    result.status
                 )
             } catch (e: HttpException) {
                 ServerStatusState.Error

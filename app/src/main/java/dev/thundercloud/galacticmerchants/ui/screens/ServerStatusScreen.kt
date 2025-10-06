@@ -1,12 +1,16 @@
 package dev.thundercloud.galacticmerchants.ui.screens
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import dev.thundercloud.galacticmerchants.R
 
 @Composable
 fun ServerStatusScreen(
@@ -16,14 +20,18 @@ fun ServerStatusScreen(
     when (serverStatusState) {
         is ServerStatusState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
         is ServerStatusState.Success -> ResultScreen(
-            serverStatusState.status, modifier = modifier.fillMaxWidth()
+            status = serverStatusState.status, modifier = modifier.fillMaxWidth()
         )
         is ServerStatusState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
     }
 }
 
 @Composable
-fun LoadingScreen(modifier: Modifier = Modifier) {}
+fun LoadingScreen(modifier: Modifier = Modifier) {
+    Text(
+        text = stringResource(R.string.loading)
+    )
+}
 
 @Composable
 fun ResultScreen(status: String, modifier: Modifier = Modifier) {
@@ -36,4 +44,18 @@ fun ResultScreen(status: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ErrorScreen(modifier: Modifier = Modifier) {}
+fun ErrorScreen(modifier: Modifier = Modifier) {
+    Text(
+        text = "failure"
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun StatusPreview(modifier: Modifier = Modifier) {
+    Column {
+        LoadingScreen(modifier)
+        ResultScreen("GM is Live", modifier)
+        ErrorScreen(modifier)
+    }
+}

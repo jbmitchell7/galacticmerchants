@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -63,7 +64,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     // Retrofit
     implementation(libs.retrofit)
-    // Retrofit with Moshi Converter
-    implementation(libs.converter.moshi)
-    implementation(libs.moshi.kotlin)
+    // Retrofit with Kotlin serialization Converter
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.okhttp)
+    // Kotlin serialization
+    implementation(libs.kotlinx.serialization.json)
+
 }

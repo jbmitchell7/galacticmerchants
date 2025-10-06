@@ -1,20 +1,16 @@
 package dev.thundercloud.galacticmerchants.network
 
-import dev.thundercloud.galacticmerchants.model.ServerStatus
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dev.thundercloud.galacticmerchants.model.serverstatus.ServerStatus
+import kotlinx.serialization.json.Json
 import retrofit2.Retrofit
 import retrofit2.http.GET
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
+import okhttp3.MediaType.Companion.toMediaType
 
 private const val BASE_URL = "https://api.spacetraders.io/v2/"
 
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
-
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
     .baseUrl(BASE_URL)
     .build()
 
