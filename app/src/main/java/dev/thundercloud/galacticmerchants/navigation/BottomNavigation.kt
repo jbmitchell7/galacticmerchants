@@ -9,7 +9,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -38,9 +37,7 @@ fun BottomNavigation(navController: NavController) {
         )
     )
 
-    NavigationBar(
-        containerColor = Color.White
-    ) {
+    NavigationBar() {
         navRoutes.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = selectedNavigationIndex.intValue == index,
@@ -49,12 +46,7 @@ fun BottomNavigation(navController: NavController) {
                     navController.navigate(item.route)
                 },
                 label = {
-                    Text(
-                        item.title,
-                        color = if (index == selectedNavigationIndex.intValue)
-                            Color.Black
-                        else Color.Gray
-                    )
+                    Text(item.title)
                 },
                 icon = {
                     Icon(imageVector = ImageVector.vectorResource(item.icon), contentDescription = "${item.title} icon")
