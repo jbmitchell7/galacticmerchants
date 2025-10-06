@@ -1,4 +1,4 @@
-package dev.thundercloud.galacticmerchants.ui.screens
+package dev.thundercloud.galacticmerchants.ui.screens.serverstatus
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
