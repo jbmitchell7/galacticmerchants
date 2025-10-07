@@ -26,14 +26,14 @@ fun BottomNavigation(navController: NavController) {
 
     val navRoutes = listOf(
         NavigationItem(
-            title = stringResource(R.string.profile),
-            icon = R.drawable.id_card,
-            route = Screen.Profile.route
-        ),
-        NavigationItem(
             title = stringResource(R.string.server_status),
             icon = R.drawable.network_check,
             route = Screen.Status.route
+        ),
+        NavigationItem(
+            title = stringResource(R.string.profile),
+            icon = R.drawable.id_card,
+            route = Screen.Profile.route
         )
     )
 

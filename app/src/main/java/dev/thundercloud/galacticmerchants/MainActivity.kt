@@ -54,7 +54,9 @@ fun ShellScreen() {
                     )
                 }
                 composable(route = Screen.Profile.route) {
-                    ProfileScreen()
+                    ProfileScreen(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         NavHost(
